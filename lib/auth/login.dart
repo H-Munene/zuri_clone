@@ -84,25 +84,30 @@ class _LoginPageState extends State<LoginPage> {
               placeholder: globals.password,
               controller: firstnameController,
               focusNode: focuspassword),
-          Padding(padding: EdgeInsets.only(bottom: 45)),
+          Padding(padding: EdgeInsets.only(bottom: 10)),
+          //forgot password
+          SizedBox(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                RichText(
+                    text: TextSpan(
+                        text: "Forgot Password?",
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.pushNamed(context, '/forgot-password');
+                          })),
+                Padding(padding: EdgeInsets.only(right: 20)),
+              ],
+            ),
+          ),
+          Padding(padding: EdgeInsets.only(bottom: 35)),
 
           //login button
           LoginRegisterButton(btnText: globals.loginbtnText),
-
-          //forgot password
-          Container(
-            padding: globals.loginRegisterBtnPadding,
-            child: RichText(
-                text: TextSpan(
-                    text: "Forgot Password?",
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Colors.blue),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        Navigator.pushNamed(context, '/forgot-password');
-                      })),
-          ),
 
           //create account
           Container(
