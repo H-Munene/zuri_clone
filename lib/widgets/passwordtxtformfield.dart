@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 
-class TextFormFieldWidget extends StatelessWidget {
+class PasswordTextFormField extends StatefulWidget {
   final String placeholder;
   final TextEditingController controller;
   final FocusNode focusNode;
   final void Function()? ontapfocus;
-  final Icon? suffixIcon;
 
-  const TextFormFieldWidget(
+  const PasswordTextFormField(
       {super.key,
       required this.placeholder,
       required this.controller,
       required this.focusNode,
-      required this.ontapfocus,
-      this.suffixIcon});
+      required this.ontapfocus});
+
+  @override
+  State<PasswordTextFormField> createState() => _PasswordTextFormFieldState();
+}
+
+class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
+  bool showPassword = false;
+
+  void toggleVisibility() {
+    setState(() {
+      showPassword = !showPassword;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +33,19 @@ class TextFormFieldWidget extends StatelessWidget {
       width: 0.9 * MediaQuery.of(context).size.width,
       padding: EdgeInsets.only(top: 10, bottom: 10),
       child: TextFormField(
-        onTap: ontapfocus,
-        focusNode: focusNode,
+        obscureText: showPassword,
+        onTap: widget.ontapfocus,
+        focusNode: widget.focusNode,
         autocorrect: false,
-        controller: controller,
+        controller: widget.controller,
         decoration: InputDecoration(
-            labelText: placeholder,
+            suffixIcon: GestureDetector(
+              onTap: toggleVisibility,
+              child: showPassword
+                  ? Icon(Icons.visibility)
+                  : Icon(Icons.visibility_off),
+            ),
+            labelText: widget.placeholder,
             labelStyle: TextStyle(),
             border: OutlineInputBorder(
               borderRadius:

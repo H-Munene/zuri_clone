@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
+import 'package:zuri_health_clone/widgets/passwordtxtformfield.dart';
 import 'package:zuri_health_clone/widgets/textformfield.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,7 +15,16 @@ class _LoginPageState extends State<LoginPage> {
   FocusNode focusfirstname = FocusNode();
   FocusNode focuslastname = FocusNode();
   FocusNode focusemail = FocusNode();
-  
+  FocusNode focuspassword = FocusNode();
+
+  bool showPassword = false;
+
+  void toggleVisibility() {
+    setState(() {
+      showPassword = !showPassword;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -38,11 +48,7 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           TextFormFieldWidget(
             focusNode: focusfirstname,
-            ontapfocus: () => {
-              setState(() {
-                focusfirstname.requestFocus();
-              })
-            },
+            ontapfocus: () => focusfirstname.requestFocus(),
             placeholder: globals.firstname,
             controller: firstnameController,
           ),
@@ -58,6 +64,11 @@ class _LoginPageState extends State<LoginPage> {
             focusNode: focusemail,
             ontapfocus: focusemail.requestFocus,
           ),
+          PasswordTextFormField(
+              ontapfocus: focuspassword.requestFocus,
+              placeholder: globals.password,
+              controller: firstnameController,
+              focusNode: focuspassword)
         ],
       ))),
     );
