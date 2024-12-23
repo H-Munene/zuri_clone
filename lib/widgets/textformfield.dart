@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 
-class TextFormFieldWidget extends StatelessWidget {
+class TextFormFieldWidget extends StatefulWidget {
   final String placeholder;
   final TextEditingController controller;
   final FocusNode focusNode;
@@ -17,18 +17,33 @@ class TextFormFieldWidget extends StatelessWidget {
       this.suffixIcon});
 
   @override
+  State<TextFormFieldWidget> createState() => _TextFormFieldWidgetState();
+}
+
+class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: 0.9 * MediaQuery.of(context).size.width,
       padding: EdgeInsets.only(top: 10, bottom: 10),
       child: TextFormField(
-        onTap: ontapfocus,
-        focusNode: focusNode,
+        onChanged: (value) {
+          setState(() {});
+        },
+        onTap: widget.ontapfocus,
+        focusNode: widget.focusNode,
         autocorrect: false,
-        controller: controller,
+        controller: widget.controller,
         decoration: InputDecoration(
-            labelText: placeholder,
-            labelStyle: TextStyle(),
+            suffixIcon: (widget.controller.text.isNotEmpty)
+                ? IconButton(
+                    onPressed: () {
+                      widget.controller.clear();
+                      setState(() {});
+                    },
+                    icon: Icon(Icons.cancel))
+                : null,
+            labelText: widget.placeholder,
             border: OutlineInputBorder(
               borderRadius:
                   BorderRadius.circular(globals.textfieldBorderRadius),
