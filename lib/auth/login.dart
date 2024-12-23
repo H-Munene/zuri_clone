@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
+import 'package:zuri_health_clone/widgets/loginregisterbtn.dart';
 import 'package:zuri_health_clone/widgets/passwordtxtformfield.dart';
 import 'package:zuri_health_clone/widgets/textformfield.dart';
 
@@ -46,29 +48,80 @@ class _LoginPageState extends State<LoginPage> {
           child: Center(
               child: Column(
         children: [
-          TextFormFieldWidget(
-            focusNode: focusfirstname,
-            ontapfocus: () => focusfirstname.requestFocus(),
-            placeholder: globals.firstname,
-            controller: firstnameController,
-          ),
-          TextFormFieldWidget(
-            placeholder: globals.lastname,
-            controller: firstnameController,
-            focusNode: focuslastname,
-            ontapfocus: () => focuslastname.requestFocus(),
-          ),
+          //welcome back, sign in as patient
+          Container(
+              padding: EdgeInsets.only(left: 20, top: 20),
+              child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Welcome back!',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text('Sign in as a patient'),
+                  ],
+                ),
+              ])),
+
+          //email
           TextFormFieldWidget(
             placeholder: globals.email,
             controller: firstnameController,
             focusNode: focusemail,
             ontapfocus: focusemail.requestFocus,
           ),
+
+          //password
           PasswordTextFormField(
               ontapfocus: focuspassword.requestFocus,
               placeholder: globals.password,
               controller: firstnameController,
-              focusNode: focuspassword)
+              focusNode: focuspassword),
+          Padding(padding: EdgeInsets.only(bottom: 20)),
+
+          //login button
+          LoginRegisterButton(btnText: globals.loginbtnText),
+
+          //forgot password
+          Container(
+            padding: globals.loginRegisterBtnPadding,
+            child: RichText(
+                text: TextSpan(
+                    text: "Forgot Password?",
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.pushNamed(context, '/forgot-password');
+                      })),
+          ),
+
+          //create account
+          Container(
+            padding: globals.loginRegisterBtnPadding,
+            child: RichText(
+                text: TextSpan(
+                    text: "Don't have an account?   ",
+                    style: TextStyle(color: Colors.black),
+                    children: [
+                  TextSpan(
+                      text: "Create account",
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap =
+                            () => Navigator.pushNamed(context, '/register'))
+                ])),
+          )
         ],
       ))),
     );

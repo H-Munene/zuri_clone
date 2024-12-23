@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zuri_health_clone/auth/forgotpass.dart';
 import 'package:zuri_health_clone/auth/login.dart';
+import 'package:zuri_health_clone/auth/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +36,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const LoginPage(),
+      routes: {
+        '/forgot-password': (context) => const ForgotPasswordPage(),
+        '/register': (context) => const RegisterPage(),
+        '/login': (context) => const LoginPage(),
+      },
     );
   }
 }
