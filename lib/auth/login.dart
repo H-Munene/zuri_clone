@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           //welcome back, sign in as patient
           Container(
-              padding: EdgeInsets.only(left: 20, top: 20, bottom: 10),
+              padding: globals.titlepadding,
               child: Column(children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
