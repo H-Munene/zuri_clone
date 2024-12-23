@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           //welcome back, sign in as patient
           Container(
-              padding: EdgeInsets.only(left: 20, top: 20),
+              padding: EdgeInsets.only(left: 20, top: 20, bottom: 10),
               child: Column(children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -77,14 +77,14 @@ class _LoginPageState extends State<LoginPage> {
             focusNode: focusemail,
             ontapfocus: focusemail.requestFocus,
           ),
-
+          Padding(padding: EdgeInsets.only(bottom: 17)),
           //password
           PasswordTextFormField(
               ontapfocus: focuspassword.requestFocus,
               placeholder: globals.password,
               controller: firstnameController,
               focusNode: focuspassword),
-          Padding(padding: EdgeInsets.only(bottom: 20)),
+          Padding(padding: EdgeInsets.only(bottom: 45)),
 
           //login button
           LoginRegisterButton(btnText: globals.loginbtnText),
@@ -106,11 +106,11 @@ class _LoginPageState extends State<LoginPage> {
 
           //create account
           Container(
-            padding: globals.loginRegisterBtnPadding,
+            padding: EdgeInsets.only(top: 45),
             child: RichText(
                 text: TextSpan(
                     text: "Don't have an account?   ",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: globals.placeholdercolor),
                     children: [
                   TextSpan(
                       text: "Create account",

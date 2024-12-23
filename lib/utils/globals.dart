@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //colors
-const placeholdercolor = Color.fromRGBO(151, 151, 151, 1);
+const placeholdercolor = Color.fromRGBO(129, 127, 127, 1);
 const loginRegisterBtnColor = Color.fromARGB(255, 239, 238, 238);
 const errorColor = Colors.red;
 
@@ -24,4 +24,4 @@ const double textfieldBorderRadius = 4;
 
 //padding
 const EdgeInsets pagePadding = EdgeInsets.fromLTRB(10, 20, 10, 20);
-const EdgeInsets loginRegisterBtnPadding = EdgeInsets.only(top: 10, bottom: 10);
+const EdgeInsets loginRegisterBtnPadding = EdgeInsets.only(top: 10, bottom: 20);
