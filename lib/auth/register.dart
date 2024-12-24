@@ -1,5 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 import 'package:zuri_health_clone/widgets/loginregisterbtn.dart';
 import 'package:zuri_health_clone/widgets/passwordtxtformfield.dart';
@@ -78,16 +79,34 @@ class _RegisterPageState extends State<RegisterPage> {
                   focusNode: focusemail,
                   ontapfocus: focusemail.requestFocus),
               //phone number
-
+              Container(
+                padding: EdgeInsets.only(bottom: 10, top: 10),
+                width: 0.9 * MediaQuery.of(context).size.width,
+                child: IntlPhoneField(
+                  decoration: InputDecoration(
+                    labelText: globals.phonenumber,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(),
+                    ),
+                  ),
+                  initialCountryCode: 'KE',
+                  onChanged: (phone) {
+                    debugPrint(phone.completeNumber);
+                  },
+                ),
+              ),
               //gender
-              DropdownMenu(
-                width: 0.8 * MediaQuery.of(context).size.width,
-                  hintText: globals.gender,
-                  onSelected: (value) => debugPrint(value),
-                  dropdownMenuEntries: globals.genders
-                      .map((gender) =>
-                          DropdownMenuEntry(value: gender, label: gender))
-                      .toList()),
+              Container(
+                padding: EdgeInsets.only(bottom: 10),
+                child: DropdownMenu(
+                width: 0.9 * MediaQuery.of(context).size.width,
+                    hintText: globals.gender,
+                    onSelected: (value) => debugPrint(value),
+                    dropdownMenuEntries: globals.genders
+                        .map((gender) =>
+                            DropdownMenuEntry(value: gender, label: gender))
+                        .toList()),
+              ),
               //password
               PasswordTextFormField(
                   placeholder: globals.password,
