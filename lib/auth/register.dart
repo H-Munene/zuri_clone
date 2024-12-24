@@ -1,4 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:zuri_health_clone/utils/globals.dart' as globals;
+import 'package:zuri_health_clone/widgets/loginregisterbtn.dart';
+import 'package:zuri_health_clone/widgets/passwordtxtformfield.dart';
+import 'package:zuri_health_clone/widgets/textformfield.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -8,14 +13,167 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController firstnameController = TextEditingController();
+  final TextEditingController lastnameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmpassController = TextEditingController();
+
+  FocusNode focusfirstname = FocusNode();
+  FocusNode focuslastname = FocusNode();
+  FocusNode focusemail = FocusNode();
+  FocusNode focusphone = FocusNode();
+  FocusNode focuspassword = FocusNode();
+  FocusNode focusconfirmPassword = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Center(child: Column(
-        children: [
-          Text('in register page'),
-        ],
-      ),)),
+      body: SafeArea(
+          child: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              //titles
+              Container(
+                  padding: globals.titlepadding,
+                  child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Create an account',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 28),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                            'We would need more information to serve you better'),
+                      ],
+                    ),
+                  ])),
+
+              //first name
+              TextFormFieldWidget(
+                  placeholder: globals.firstname,
+                  controller: firstnameController,
+                  focusNode: focusfirstname,
+                  ontapfocus: focusfirstname.requestFocus),
+
+              //last name
+              TextFormFieldWidget(
+                  placeholder: globals.lastname,
+                  controller: lastnameController,
+                  focusNode: focuslastname,
+                  ontapfocus: focuslastname.requestFocus),
+              //email
+              TextFormFieldWidget(
+                  placeholder: globals.email,
+                  controller: emailController,
+                  focusNode: focusemail,
+                  ontapfocus: focusemail.requestFocus),
+              //phone number
+
+              //gender
+              DropdownMenu(
+                width: 0.8 * MediaQuery.of(context).size.width,
+                  hintText: globals.gender,
+                  onSelected: (value) => debugPrint(value),
+                  dropdownMenuEntries: globals.genders
+                      .map((gender) =>
+                          DropdownMenuEntry(value: gender, label: gender))
+                      .toList()),
+              //password
+              PasswordTextFormField(
+                  placeholder: globals.password,
+                  controller: passwordController,
+                  focusNode: focuspassword,
+                  ontapfocus: focuspassword.requestFocus),
+
+              //password guidelines
+              Container(
+                width: 375,
+                padding: EdgeInsets.only(left: 25, bottom: 10, right: 25),
+                child: Column(
+                  children: [
+                    Text(
+                      "Password should contain at least 8 characters. One uppercase letter. One lowercase letter. One digit. One special character e.g. !#\$",
+                      style: TextStyle(
+                          fontSize: 12.5, color: globals.placeholdercolor),
+                    )
+                  ],
+                ),
+              ),
+              //confirm password
+              PasswordTextFormField(
+                  placeholder: globals.confirmpassword,
+                  controller: confirmpassController,
+                  focusNode: focusconfirmPassword,
+                  ontapfocus: focusconfirmPassword.requestFocus),
+
+              //next
+              LoginRegisterButton(btnText: globals.registerbtnText),
+
+              //policy agreement
+              Column(
+                children: [
+                  RichText(
+                      text: TextSpan(
+                          text: 'By continuing you agreed to our ',
+                          style: TextStyle(color: Colors.black),
+                          children: [
+                        TextSpan(
+                            text: 'privacy',
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.blue)),
+                      ])),
+                  RichText(
+                      text: TextSpan(
+                          text: 'policy',
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: Colors.blue),
+                          children: [
+                        TextSpan(
+                            text: ' and ',
+                            style: TextStyle(
+                                color: Colors.black,
+                                decoration: TextDecoration.none)),
+                        TextSpan(
+                            text: 'terms and conditions',
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.blue)),
+                      ])),
+                  Padding(padding: EdgeInsets.only(bottom: 40))
+                ],
+              ),
+              //already a member login
+              RichText(
+                  text: TextSpan(
+                      text: 'Already a member? ',
+                      style: TextStyle(color: globals.placeholdercolor),
+                      children: [
+                    TextSpan(
+                        text: 'LOGIN',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap =
+                              () => Navigator.pushNamed(context, '/login'))
+                  ])),
+              Padding(padding: EdgeInsets.only(bottom: 20))
+            ],
+          ),
+        ),
+      )),
     );
   }
 }

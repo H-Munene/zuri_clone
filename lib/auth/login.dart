@@ -13,7 +13,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController firstnameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   FocusNode focusfirstname = FocusNode();
   FocusNode focuslastname = FocusNode();
   FocusNode focusemail = FocusNode();
@@ -37,6 +39,8 @@ class _LoginPageState extends State<LoginPage> {
     focusfirstname.dispose();
     focuslastname.dispose();
     focusemail.dispose();
+    emailController.dispose();
+    passwordController.dispose();
 
     super.dispose();
   }
@@ -73,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
           //email
           TextFormFieldWidget(
             placeholder: globals.email,
-            controller: firstnameController,
+            controller: emailController,
             focusNode: focusemail,
             ontapfocus: focusemail.requestFocus,
           ),
@@ -82,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
           PasswordTextFormField(
               ontapfocus: focuspassword.requestFocus,
               placeholder: globals.password,
-              controller: firstnameController,
+              controller: passwordController,
               focusNode: focuspassword),
           Padding(padding: EdgeInsets.only(bottom: 10)),
           //forgot password
@@ -111,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
 
           //create account
           Container(
-            padding: EdgeInsets.only(top: 45),
+            padding: EdgeInsets.only(top: 35),
             child: RichText(
                 text: TextSpan(
                     text: "Don't have an account?   ",
