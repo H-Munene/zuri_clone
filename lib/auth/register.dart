@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:zuri_health_clone/routes/routes.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 import 'package:zuri_health_clone/widgets/loginregisterbtn.dart';
 import 'package:zuri_health_clone/widgets/passwordtxtformfield.dart';
@@ -44,9 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Column(children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        TitleWidget(titleText: globals.registerTitle)
-                      ],
+                      children: [TitleWidget(titleText: globals.registerTitle)],
                     ),
                     SubtitleWidget(subtitleText: globals.registerSubTitle),
                   ])),
@@ -93,13 +92,14 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 padding: EdgeInsets.only(bottom: 10, top: 10),
                 child: DropdownMenu(
-                  
                     width: 0.9 * MediaQuery.of(context).size.width,
                     hintText: globals.gender,
                     onSelected: (value) => debugPrint(value),
                     dropdownMenuEntries: globals.genders
-                        .map((gender) =>
-                            DropdownMenuEntry(value: gender, label: gender,))
+                        .map((gender) => DropdownMenuEntry(
+                              value: gender,
+                              label: gender,
+                            ))
                         .toList()),
               ),
               //password
@@ -180,8 +180,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             decoration: TextDecoration.underline,
                             color: Colors.blue),
                         recognizer: TapGestureRecognizer()
-                          ..onTap =
-                              () => Navigator.pushNamed(context, '/login'))
+                          ..onTap = () => Navigator.pushNamed(
+                              context, RouteGenerator.loginPage))
                   ])),
               Padding(padding: EdgeInsets.only(bottom: 20))
             ],

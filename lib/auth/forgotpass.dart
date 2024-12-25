@@ -22,6 +22,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           child: Center(
         child: Column(
           children: [
+            Padding(padding: EdgeInsets.only(top: 90)),
             //image
             Container(
               height: 0.2 * MediaQuery.of(context).size.height,
@@ -65,7 +66,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 controller: emailController,
                 focusNode: focusemail,
                 ontapfocus: focusemail.requestFocus),
-
+            Padding(padding: EdgeInsets.only(bottom: 10)),
             //reset password
             LoginRegisterButton(
               btnText: globals.resetPassword,

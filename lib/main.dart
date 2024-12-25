@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zuri_health_clone/auth/forgotpass.dart';
-import 'package:zuri_health_clone/auth/login.dart';
-import 'package:zuri_health_clone/auth/register.dart';
+import 'package:zuri_health_clone/routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,16 +30,13 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 39, 160, 216)),
+            seedColor: const Color.fromARGB(255, 72, 197, 255)),
         
         useMaterial3: true,
       ),
-      home: const LoginPage(),
-      routes: {
-        '/forgot-password': (context) => const ForgotPasswordPage(),
-        '/register': (context) => const RegisterPage(),
-        '/login': (context) => const LoginPage(),
-      },
+      
+      initialRoute: RouteGenerator.loginPage,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

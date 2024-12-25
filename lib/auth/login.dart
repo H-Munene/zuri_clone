@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:zuri_health_clone/routes/routes.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 import 'package:zuri_health_clone/widgets/loginregisterbtn.dart';
 import 'package:zuri_health_clone/widgets/passwordtxtformfield.dart';
@@ -90,7 +91,8 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.blue),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.pushNamed(context, '/forgot-password');
+                            Navigator.pushNamed(
+                                context, RouteGenerator.forgotPasswordPage);
                           })),
                 Padding(padding: EdgeInsets.only(right: 20)),
               ],
@@ -115,8 +117,8 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: TextDecoration.underline,
                           color: Colors.blue),
                       recognizer: TapGestureRecognizer()
-                        ..onTap =
-                            () => Navigator.pushNamed(context, '/register'))
+                        ..onTap = () => Navigator.pushNamed(
+                            context, RouteGenerator.registerPage))
                 ])),
           )
         ],
