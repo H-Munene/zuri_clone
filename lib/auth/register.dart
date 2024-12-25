@@ -101,12 +101,13 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 padding: EdgeInsets.only(bottom: 10, top: 10),
                 child: DropdownMenu(
+                  
                     width: 0.9 * MediaQuery.of(context).size.width,
                     hintText: globals.gender,
                     onSelected: (value) => debugPrint(value),
                     dropdownMenuEntries: globals.genders
                         .map((gender) =>
-                            DropdownMenuEntry(value: gender, label: gender))
+                            DropdownMenuEntry(value: gender, label: gender,))
                         .toList()),
               ),
               //password

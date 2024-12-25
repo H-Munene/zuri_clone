@@ -33,7 +33,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       width: 0.9 * MediaQuery.of(context).size.width,
       padding: EdgeInsets.only(top: 10, bottom: 10),
       child: TextFormField(
-        obscureText: showPassword,
+        obscureText: !showPassword,
         onTap: widget.ontapfocus,
         focusNode: widget.focusNode,
         autocorrect: false,
@@ -42,8 +42,8 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
             suffixIcon: GestureDetector(
               onTap: toggleVisibility,
               child: showPassword
-                  ? Icon(Icons.visibility)
-                  : Icon(Icons.visibility_off),
+                  ? Icon(Icons.visibility_off)
+                  : Icon(Icons.visibility),
             ),
             labelText: widget.placeholder,
             labelStyle: TextStyle(),
