@@ -1,5 +1,7 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 import 'package:zuri_health_clone/widgets/loginregisterbtn.dart';
@@ -79,17 +81,41 @@ class _RegisterPageState extends State<RegisterPage> {
                   focusNode: focusemail,
                   ontapfocus: focusemail.requestFocus),
               //phone number
+              Row(
+                children: [
+                  CountryCodePicker(
+                    textStyle: TextStyle(fontSize: 20, color: Colors.black),
+                    initialSelection: 'KE',
+                    onChanged: print,
+                    showCountryOnly: false,
+                    flagWidth: 27,
+                    showOnlyCountryWhenClosed: false,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10,top: 10),
+                    width: 250,
+                    child: TextFormFieldWidget(
+                        placeholder: globals.phonenumber,
+                        controller: phoneController,
+                        focusNode: focusphone,
+                        ontapfocus: focusphone.requestFocus),
+                  )
+                ],
+              ),
               Container(
                 padding: EdgeInsets.only(bottom: 10, top: 10),
                 width: 0.9 * MediaQuery.of(context).size.width,
                 child: IntlPhoneField(
                   decoration: InputDecoration(
+
                     labelText: globals.phonenumber,
                     border: OutlineInputBorder(
                       borderSide: BorderSide(),
                     ),
                   ),
+                  // pickerDialogStyle: PickerDialogStyle(backgroundColor: Colors.transparent),
                   initialCountryCode: 'KE',
+                  disableLengthCheck: true,
                   onChanged: (phone) {
                     debugPrint(phone.completeNumber);
                   },
@@ -97,9 +123,9 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               //gender
               Container(
-                padding: EdgeInsets.only(bottom: 10),
+                padding: EdgeInsets.only(bottom: 10,top: 10),
                 child: DropdownMenu(
-                width: 0.9 * MediaQuery.of(context).size.width,
+                    width: 0.9 * MediaQuery.of(context).size.width,
                     hintText: globals.gender,
                     onSelected: (value) => debugPrint(value),
                     dropdownMenuEntries: globals.genders

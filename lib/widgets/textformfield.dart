@@ -7,14 +7,14 @@ class TextFormFieldWidget extends StatefulWidget {
   final FocusNode focusNode;
   final void Function()? ontapfocus;
   final Icon? suffixIcon;
-
-  const TextFormFieldWidget(
-      {super.key,
-      required this.placeholder,
-      required this.controller,
-      required this.focusNode,
-      required this.ontapfocus,
-      this.suffixIcon});
+  const TextFormFieldWidget({
+    super.key,
+    required this.placeholder,
+    required this.controller,
+    required this.focusNode,
+    required this.ontapfocus,
+    this.suffixIcon,
+  });
 
   @override
   State<TextFormFieldWidget> createState() => _TextFormFieldWidgetState();
@@ -30,9 +30,18 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
         onChanged: (value) {
           setState(() {});
         },
+        keyboardType: (widget.placeholder == 'Phone number')
+            ? TextInputType.phone
+            : (widget.placeholder == 'Email')
+                ? TextInputType.emailAddress
+                : (widget.placeholder == 'First name' ||
+                        widget.placeholder == 'Last name')
+                    ? TextInputType.name
+                    : null,
         onTap: widget.ontapfocus,
         focusNode: widget.focusNode,
         autocorrect: false,
+        maxLength: (widget.placeholder == 'Phone number') ? 9 : null,
         controller: widget.controller,
         decoration: InputDecoration(
             suffixIcon: (widget.controller.text.isNotEmpty)

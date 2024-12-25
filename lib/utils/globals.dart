@@ -28,4 +28,4 @@ const EdgeInsets loginRegisterBtnPadding = EdgeInsets.only(top: 10, bottom: 20);
 const EdgeInsets titlepadding = EdgeInsets.only(left: 20, top: 20, bottom: 10);
 
 //collections
-const List<String> genders = ['Male', 'Female'];
+const List<String> genders = ['Male', 'Female', 'Other'];
