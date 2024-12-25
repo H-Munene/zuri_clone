@@ -3,7 +3,9 @@ import 'package:flutter/gestures.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 import 'package:zuri_health_clone/widgets/loginregisterbtn.dart';
 import 'package:zuri_health_clone/widgets/passwordtxtformfield.dart';
+import 'package:zuri_health_clone/widgets/subtitle.dart';
 import 'package:zuri_health_clone/widgets/textformfield.dart';
+import 'package:zuri_health_clone/widgets/title.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -56,22 +58,8 @@ class _LoginPageState extends State<LoginPage> {
           Container(
               padding: globals.titlepadding,
               child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Welcome back!',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Sign in as a patient'),
-                  ],
-                ),
+                TitleWidget(titleText: globals.loginTitle),
+                SubtitleWidget(subtitleText: globals.loginSubTitle),
               ])),
 
           //email

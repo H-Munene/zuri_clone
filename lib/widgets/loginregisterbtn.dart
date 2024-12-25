@@ -3,8 +3,10 @@ import 'package:zuri_health_clone/utils/globals.dart' as globals;
 
 class LoginRegisterButton extends StatelessWidget {
   final String btnText;
+  final bool? forgotPass;
 
-  const LoginRegisterButton({super.key, required this.btnText});
+  const LoginRegisterButton(
+      {super.key, required this.btnText, this.forgotPass = false});
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +14,12 @@ class LoginRegisterButton extends StatelessWidget {
       padding: globals.loginRegisterBtnPadding,
       width: 0.7 * MediaQuery.of(context).size.width,
       child: ElevatedButton(
-        
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          backgroundColor: globals.loginRegisterBtnColor
-        ),
+          style: ElevatedButton.styleFrom(
+              elevation: 0, backgroundColor: forgotPass == false ? globals.loginRegisterBtnColor : globals.forgotpassBtnColor ),
           onPressed: () {},
           child: Text(
             btnText,
-            style: TextStyle(color: globals.placeholdercolor, fontSize: 14),
+            style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),
           )),
     );
   }

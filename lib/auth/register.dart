@@ -4,7 +4,9 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 import 'package:zuri_health_clone/widgets/loginregisterbtn.dart';
 import 'package:zuri_health_clone/widgets/passwordtxtformfield.dart';
+import 'package:zuri_health_clone/widgets/subtitle.dart';
 import 'package:zuri_health_clone/widgets/textformfield.dart';
+import 'package:zuri_health_clone/widgets/title.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -43,20 +45,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          'Create an account',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 28),
-                        ),
+                        TitleWidget(titleText: globals.registerTitle)
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                            'We would need more information to serve you better'),
-                      ],
-                    ),
+                    SubtitleWidget(subtitleText: globals.registerSubTitle),
                   ])),
 
               //first name
