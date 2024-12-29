@@ -28,10 +28,6 @@ class RouteGenerator {
   }
 }
 
-class HomePage {
-  const HomePage();
-}
-
 class RouteException implements Exception {
   final String message;
   const RouteException(this.message);
