@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:zuri_health_clone/widgets/title.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+class NavigationMenu extends StatefulWidget {
+  const NavigationMenu({super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<NavigationMenu> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomepageState extends State<NavigationMenu> {
   int currentPageIndex = 0;
 
   @override

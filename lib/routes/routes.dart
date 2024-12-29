@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zuri_health_clone/auth/forgotpass.dart';
 import 'package:zuri_health_clone/auth/login.dart';
 import 'package:zuri_health_clone/auth/register.dart';
-import 'package:zuri_health_clone/pages/homepage.dart';
+import 'package:zuri_health_clone/pages/home.dart';
 
 class RouteGenerator {
   static const String homePage = "/";
@@ -19,7 +19,7 @@ class RouteGenerator {
       case registerPage:
         return MaterialPageRoute(builder: (_) => const RegisterPage());
       case homePage:
-        return MaterialPageRoute(builder: (_) => const Homepage());
+        return MaterialPageRoute(builder: (_) => const HomePage());
       case forgotPasswordPage:
         return MaterialPageRoute(builder: (_) => const ForgotPasswordPage());
       default:

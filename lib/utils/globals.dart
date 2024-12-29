@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:zuri_health_clone/pages/historypage.dart';
-import 'package:zuri_health_clone/pages/homepage.dart';
+import 'package:zuri_health_clone/pages/home.dart';
 import 'package:zuri_health_clone/pages/orders.dart';
 import 'package:zuri_health_clone/pages/profile.dart';
 import 'package:zuri_health_clone/pages/vitals.dart';
-import 'package:zuri_health_clone/routes/routes.dart';
 
 //colors
 const placeholdercolor = Color.fromRGBO(129, 127, 127, 1);
@@ -59,9 +58,9 @@ List<NavigationDestination> bottomNavBar = [
 ];
 
 List pages = [
-  const Homepage(),
+  const HomePage(),
   const HistoryPage(),
   const OrdersPage(),
   const VitalsPage(),
   const ProfilePage(),
-  ];
+];
