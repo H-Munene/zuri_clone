@@ -26,6 +26,6 @@ class _NavigationMenuState extends State<NavigationMenu> {
             destinations: globals.bottomNavBar.map((item) => item).toList(),
           ),
         ),
-        body: globals.pages[currentPageIndex]);
+        body: SafeArea(child: globals.pages[currentPageIndex]));
   }
 }

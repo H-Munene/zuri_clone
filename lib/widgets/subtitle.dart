@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zuri_health_clone/utils/globals.dart' as globals;
 
 class SubtitleWidget extends StatelessWidget {
   final String subtitleText;
@@ -9,16 +10,19 @@ class SubtitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: alignstart == true
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.center,
-      children: [
-        Text(subtitleText,
-            style: TextStyle(
-              fontSize: 15,
-            )),
-      ],
+    return Container(
+      padding: globals.subtitlepadding,
+      child: Row(
+        mainAxisAlignment: alignstart == true
+            ? MainAxisAlignment.start
+            : MainAxisAlignment.center,
+        children: [
+          Text(subtitleText,
+              style: TextStyle(
+                fontSize: 15,
+              )),
+        ],
+      ),
     );
   }
 }
