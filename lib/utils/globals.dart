@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zuri_health_clone/pages/historypage.dart';
+import 'package:zuri_health_clone/pages/home.dart';
+import 'package:zuri_health_clone/pages/orders.dart';
+import 'package:zuri_health_clone/pages/profile.dart';
+import 'package:zuri_health_clone/pages/vitals.dart';
 
 //colors
 const placeholdercolor = Color.fromRGBO(129, 127, 127, 1);
@@ -39,6 +44,25 @@ const double textfieldBorderRadius = 4;
 const EdgeInsets pagePadding = EdgeInsets.fromLTRB(10, 20, 10, 20);
 const EdgeInsets loginRegisterBtnPadding = EdgeInsets.only(top: 10, bottom: 20);
 const EdgeInsets titlepadding = EdgeInsets.only(left: 20, top: 20, bottom: 10);
+const EdgeInsets subtitlepadding = EdgeInsets.only(left: 20, bottom: 10);
+
 
 //collections
 const List<String> genders = ['Male', 'Female', 'Other'];
+
+//bottom nav bar
+List<NavigationDestination> bottomNavBar = [
+  NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+  NavigationDestination(icon: Icon(Icons.calendar_month), label: 'History'),
+  NavigationDestination(icon: Icon(Icons.description), label: 'Orders'),
+  NavigationDestination(icon: Icon(Icons.monitor_heart), label: 'Vitals'),
+  NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+];
+
+List pages = [
+  const HomePage(),
+  const HistoryPage(),
+  const OrdersPage(),
+  const VitalsPage(),
+  const ProfilePage(),
+];
