@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:provider/provider.dart';
+import 'package:zuri_health_clone/pages/home.dart';
+import 'package:zuri_health_clone/pages/navigationmenu.dart';
+import 'package:zuri_health_clone/providers/userprovider.dart';
 import 'package:zuri_health_clone/routes/routes.dart';
 import 'package:zuri_health_clone/utils/globals.dart' as globals;
 import 'package:zuri_health_clone/widgets/loginregisterbtn.dart';
@@ -33,6 +37,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    // context.read<UserProvider>().showUsername(firstnameController.text, lastnameController.text);
+    // context.read<UserProvider>().showEmail(emailController.text);
+    // context.read<UserProvider>().showPhonenumber(phoneController.text);
+
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
@@ -74,6 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: EdgeInsets.only(bottom: 10, top: 10),
                 width: 0.9 * MediaQuery.of(context).size.width,
                 child: IntlPhoneField(
+                  controller: phoneController,
                   decoration: InputDecoration(
                     labelText: globals.phonenumber,
                     border: OutlineInputBorder(
@@ -131,7 +140,18 @@ class _RegisterPageState extends State<RegisterPage> {
                   ontapfocus: focusconfirmPassword.requestFocus),
 
               //next
-              LoginRegisterButton(btnText: globals.registerbtnText),
+              LoginRegisterButton(
+                btnText: globals.registerbtnText,
+                onpressed: () => {
+                  context.read<UserProvider>().showUsername(
+                      firstnameController.text, lastnameController.text),
+                  context.read<UserProvider>().showEmail(emailController.text),
+                  context
+                      .read<UserProvider>()
+                      .showPhonenumber(phoneController.text),
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  NavigationMenu()))
+                },
+              ),
 
               //policy agreement
               Column(

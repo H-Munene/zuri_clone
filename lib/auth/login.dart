@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
           Padding(padding: EdgeInsets.only(bottom: 35)),
 
           //login button
-          LoginRegisterButton(btnText: globals.loginbtnText),
+          LoginRegisterButton(btnText: globals.loginbtnText, onpressed: () {  },),
 
           //create account
           Container(

@@ -70,7 +70,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             //reset password
             LoginRegisterButton(
               btnText: globals.resetPassword,
-              forgotPass: true,
+              forgotPass: true, onpressed: () {  },
             )
           ],
         ),
