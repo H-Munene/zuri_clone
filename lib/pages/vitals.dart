@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zuri_health_clone/widgets/subtitle.dart';
 import 'package:zuri_health_clone/widgets/title.dart';
 
 class VitalsPage extends StatefulWidget {
